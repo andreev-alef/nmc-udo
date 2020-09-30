@@ -1,0 +1,92 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 1 сент. 2020 г., 17:29:13
+    Author     : Alef
+*/
+
+/*
+ Created on : 1 С„РµРІСЂ. 2020 Рі., 21:27:20
+ Author : andreev_af
+*/
+
+
+@font-face {font-family:"Comfortaa-Bold"; src: url("../fonts/Comfortaa-Bold.woff") format("woff");}
+@font-face {font-family:"Comfortaa-Light"; src: url("../fonts/Comfortaa-Light.woff") format("woff");}
+@font-face {font-family:"Comfortaa-Regular"; src: url("../fonts/Comfortaa-Regular.woff") format("woff");}
+@font-face {font-family:"Cuprum-Bold"; src: url("../fonts/Cuprum-Bold.woff") format("woff");}
+@font-face {font-family:"Cuprum-BoldItalic"; src: url("../fonts/Cuprum-BoldItalic.woff") format("woff");}
+@font-face {font-family:"Cuprum-Italic"; src: url("../fonts/Cuprum-Italic.woff") format("woff");}
+@font-face {font-family:"Cuprum-Regular"; src: url("../fonts/Cuprum-Regular.woff") format("woff");}
+@font-face {font-family:"Exo2-Bold"; src: url("../fonts/Exo2-Bold.woff") format("woff");}
+@font-face {font-family:"Exo2-BoldItalic"; src: url("../fonts/Exo2-BoldItalic.woff") format("woff");}
+@font-face {font-family:"Exo2-ExtraLight"; src: url("../fonts/Exo2-ExtraLight.woff") format("woff");}
+@font-face {font-family:"Exo2-ExtraLightItalic"; src: url("../fonts/Exo2-ExtraLightItalic.woff") format("woff");}
+@font-face {font-family:"Exo2-Italic"; src: url("../fonts/Exo2-Italic.woff") format("woff");}
+@font-face {font-family:"Exo2-Light"; src: url("../fonts/Exo2-Light.woff") format("woff");}
+@font-face {font-family:"Exo2-LightItalic"; src: url("../fonts/Exo2-LightItalic.woff") format("woff");}
+@font-face {font-family:"Exo2-Medium"; src: url("../fonts/Exo2-Medium.woff") format("woff");}
+@font-face {font-family:"Exo2-MediumItalic"; src: url("../fonts/Exo2-MediumItalic.woff") format("woff");}
+@font-face {font-family:"Exo2-Regular"; src: url("../fonts/Exo2-Regular.woff") format("woff");}
+@font-face {font-family:"Exo2-SemiBold"; src: url("../fonts/Exo2-SemiBold.woff") format("woff");}
+@font-face {font-family:"Exo2-SemiBoldItalic"; src: url("../fonts/Exo2-SemiBoldItalic.woff") format("woff");}
+@font-face {font-family:"Exo2-Thin"; src: url("../fonts/Exo2-Thin.woff") format("woff");}
+@font-face {font-family:"Exo2-ThinItalic"; src: url("../fonts/Exo2-ThinItalic.woff") format("woff");}
+@font-face {font-family:"OpenSans-Bold"; src: url("../fonts/OpenSans-Bold.woff") format("woff");}
+@font-face {font-family:"OpenSans-BoldItalic"; src: url("../fonts/OpenSans-BoldItalic.woff") format("woff");}
+@font-face {font-family:"OpenSans-CondBold"; src: url("../fonts/OpenSans-CondBold.woff") format("woff");}
+@font-face {font-family:"OpenSans-CondLight"; src: url("../fonts/OpenSans-CondLight.woff") format("woff");}
+@font-face {font-family:"OpenSans-CondLightItalic"; src: url("../fonts/OpenSans-CondLightItalic.woff") format("woff");}
+@font-face {font-family:"OpenSans-Italic"; src: url("../fonts/OpenSans-Italic.woff") format("woff");}
+@font-face {font-family:"OpenSans-Light"; src: url("../fonts/OpenSans-Light.woff") format("woff");}
+@font-face {font-family:"OpenSans-LightItalic"; src: url("../fonts/OpenSans-LightItalic.woff") format("woff");}
+@font-face {font-family:"OpenSans-Regular"; src: url("../fonts/OpenSans-Regular.woff") format("woff");}
+@font-face {font-family:"OpenSans-Semibold"; src: url("../fonts/OpenSans-Semibold.woff") format("woff");}
+@font-face {font-family:"OpenSans-SemiboldItalic"; src: url("../fonts/OpenSans-SemiboldItalic.woff") format("woff");}
+@font-face {font-family:"Oswald-VariableFont_wght"; src: url("../fonts/Oswald-VariableFont_wght.woff") format("woff");}
+@font-face {font-family:"UbuntuCondensed-Regular"; src: url("../fonts/UbuntuCondensed-Regular.woff") format("woff");}
+@font-face {
+    font-family: 'Material Icons';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Material Icons'),
+        local('MaterialIcons-Regular'),
+        url("../fonts/MaterialIcons-Regular.woff2") format("woff2");
+ }
+
+/* Comfortaa-Bold.woff
+ Comfortaa-Light.woff
+ Comfortaa-Regular.woff
+ Cuprum-Bold.woff
+ Cuprum-BoldItalic.woff
+ Cuprum-Italic.woff
+ Cuprum-Regular.woff
+ Exo2-Bold.woff
+ Exo2-BoldItalic.woff
+ Exo2-ExtraLight.woff
+ Exo2-ExtraLightItalic.woff
+ Exo2-Italic.woff
+ Exo2-Light.woff
+ Exo2-LightItalic.woff
+ Exo2-Medium.woff
+ Exo2-MediumItalic.woff
+ Exo2-Regular.woff
+ Exo2-SemiBold.woff
+ Exo2-SemiBoldItalic.woff
+ Exo2-Thin.woff
+ Exo2-ThinItalic.woff
+ OpenSans-Bold.woff
+ OpenSans-BoldItalic.woff
+ OpenSans-CondBold.woff
+ OpenSans-CondLight.woff
+ OpenSans-CondLightItalic.woff
+ OpenSans-Italic.woff
+ OpenSans-Light.woff
+ OpenSans-LightItalic.woff
+ OpenSans-Regular.woff
+ OpenSans-Semibold.woff
+ OpenSans-SemiboldItalic.woff
+*/

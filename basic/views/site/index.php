@@ -3,10 +3,6 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
-$form = ActiveForm::begin([
-            'id' => 'filter',
-            'options' => ['class' => 'form-horizontal'],
-        ]);
 /* @var $this yii\web\View */
 $this->title = 'НМЦ';
 ?>
@@ -27,10 +23,18 @@ $this->title = 'НМЦ';
             <h2>
                 База удостоверений
             </h2>
+            <?php
+            $form = ActiveForm::begin([
+                        'id' => 'filter-form',
+                        'options' => ['class' => 'form-horizontal'],
+            ]);
+            ?>
+            <?= $form->field($model, 'username') ?>
+            <?= $form->field($model, 'password')->passwordInput() ?>
+            <?php ActiveForm::end() ?>
             <div style="font-size: 14pt;">Всего записей: <b><?= $countNotEmpty ?></b></div>
             <div class="filter">
                 <?php
-                    
                 ?>
             </div>
             <table class="table table-hover">
