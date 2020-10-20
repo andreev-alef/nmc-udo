@@ -26,11 +26,15 @@ $this->title = 'НМЦ';
             <?php
             $form = ActiveForm::begin([
                         'id' => 'filter-form',
-                        'options' => ['class' => 'form-horizontal'],
+                        'options' => ['class' => 'form-inline'],
             ]);
             ?>
-            <?= $form->field($model, 'username') ?>
-            <?= $form->field($model, 'password')->passwordInput() ?>
+            <?= $form->field($model, 'famil')->label("Фамилия") ?>
+            <?= $form->field($model, 'gos_nomer')->label("Госномер") ?>
+            <?= $form->field($model, 'reg_nomer')->label("Регистрационный номер") ?>
+            <div class="form-group">
+                <?= Html::submitButton("Найти", ['class' => 'btn btn-primary']) ?>
+            </div>
             <?php ActiveForm::end() ?>
             <div style="font-size: 14pt;">Всего записей: <b><?= $countNotEmpty ?></b></div>
             <div class="filter">

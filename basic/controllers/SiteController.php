@@ -10,6 +10,7 @@ use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
 use app\models\UdoData;
+use app\models\FilterForm;
 
 class SiteController extends Controller {
 
@@ -59,6 +60,7 @@ class SiteController extends Controller {
      * @return string
      */
     public function actionIndex() {
+        $model = new FilterForm();
         $udoRows = new UdoData();
         $udoSheet = $udoRows->getAllData();
         $gosnomerCol = $udoSheet->getColumnIterator();
@@ -84,7 +86,8 @@ class SiteController extends Controller {
                     'cellValueAB' => $udoSheet->getCell('F1533')->getCalculatedValue(),
                     'cellNotEmpty' => $dataNotEpty[count($dataNotEpty) - 1][$c - 1],
                     'countNotEmpty' => count($dataNotEpty),
-                    'data' => $dataNotEpty
+                    'data' => $dataNotEpty,
+                    'model' => $model
         ]);
     }
 

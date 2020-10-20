@@ -25,5 +25,7 @@ class UdoData extends Model {
         $spreadsheet = $reader->load($this->udo_path);
         return $spreadsheet->getSheetByName("УДОСТОВЕРЕНИЯ")->getCell($coordinate)->getCalculatedValue();
     }
+    
+    
 
 }
