@@ -60,16 +60,22 @@ class SiteController extends Controller {
      * @return string
      */
     public function actionIndex() {
-        $model = new FilterForm();
+        $filterModel = new FilterForm();
         $udoRows = new UdoData();
         $udoSheet = $udoRows->getAllData();
-        $gosnomerCol = $udoSheet->getColumnIterator();
         $allData = $udoSheet->toArray();
         $j = 0;
         $i = 0;
         $c = 6;
         $r = 1536;
         $N = count($allData);
+        $filterFamil = 'Пусто';
+        if ($filterModel->load(Yii::$app->request->post())) {
+            $errModel = 'OK!';
+            $filterFamil = strlen(Yii::$app->request->post('famil'));
+        } else {
+            $errModel = 'Нет данных';
+        }
         while ($j < $N) {
             if ($allData[$j][$c - 1] != '') {
                 $dataNotEpty[$i] = $allData[$j];
@@ -87,7 +93,8 @@ class SiteController extends Controller {
                     'cellNotEmpty' => $dataNotEpty[count($dataNotEpty) - 1][$c - 1],
                     'countNotEmpty' => count($dataNotEpty),
                     'data' => $dataNotEpty,
-                    'model' => $model
+                    'filterModel' => $filterModel,
+                    'filterFamil' => $filterFamil
         ]);
     }
 

@@ -15,4 +15,8 @@ class FilterForm extends Model
         public $gos_nomer;
         public $reg_nomer;
         public $tema;
+        
+        public function rules(){
+            return [];
+        }
 }

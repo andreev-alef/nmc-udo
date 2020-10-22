@@ -29,17 +29,18 @@ $this->title = 'НМЦ';
                         'options' => ['class' => 'form-inline'],
             ]);
             ?>
-            <?= $form->field($model, 'famil')->label("Фамилия") ?>
-            <?= $form->field($model, 'gos_nomer')->label("Госномер") ?>
-            <?= $form->field($model, 'reg_nomer')->label("Регистрационный номер") ?>
+            <?= $form->field($filterModel, 'famil')->label("Фамилия") ?>
+            <?= $form->field($filterModel, 'gos_nomer')->label("Госномер") ?>
+            <?= $form->field($filterModel, 'reg_nomer')->label("Регистрационный номер") ?>
             <div class="form-group">
                 <?= Html::submitButton("Найти", ['class' => 'btn btn-primary']) ?>
             </div>
             <?php ActiveForm::end() ?>
-            <div style="font-size: 14pt;">Всего записей: <b><?= $countNotEmpty ?></b></div>
+            <div style="font-size: 14pt;">Всего записей: <b><?= $countNotEmpty ?></b>
+                <p><span>Фамилия: </span><?= $filterFamil ?></p>
+            </div>
             <div class="filter">
-                <?php
-                ?>
+                
             </div>
             <table class="table table-hover">
                 <tbody>
