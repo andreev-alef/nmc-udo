@@ -11,6 +11,7 @@ use app\models\LoginForm;
 use app\models\ContactForm;
 use app\models\UdoData;
 use app\models\FilterForm;
+use app\models\Test;
 
 class SiteController extends Controller {
 
@@ -60,7 +61,7 @@ class SiteController extends Controller {
      * @return string
      */
     public function actionIndex() {
-        $filterModel = new FilterForm();
+        $model = new FilterForm();
         $udoRows = new UdoData();
         $udoSheet = $udoRows->getAllData();
         $allData = $udoSheet->toArray();
@@ -70,7 +71,7 @@ class SiteController extends Controller {
         $r = 1536;
         $N = count($allData);
         $filterFamil = 'Пусто';
-        if ($filterModel->load(Yii::$app->request->post())) {
+        if ($model->load(Yii::$app->request->post())) {
             $errModel = 'OK!';
             $filterFamil = strlen(Yii::$app->request->post('famil'));
         } else {
@@ -93,7 +94,7 @@ class SiteController extends Controller {
                     'cellNotEmpty' => $dataNotEpty[count($dataNotEpty) - 1][$c - 1],
                     'countNotEmpty' => count($dataNotEpty),
                     'data' => $dataNotEpty,
-                    'filterModel' => $filterModel,
+                    'filterModel' => $model,
                     'filterFamil' => $filterFamil
         ]);
     }
@@ -154,6 +155,20 @@ class SiteController extends Controller {
      */
     public function actionAbout() {
         return $this->render('about');
+    }
+
+    public function actionTest() {
+        $testTitle = "Тестовая страница";
+
+        $model = new Test();
+
+        $famil = "Фамилия: " . Yii::$app->request->post('famil');
+
+        return $this->render('test', [
+                    'testTitle' => $testTitle,
+                    'model' => $model,
+                    'fam' => $famil,
+        ]);
     }
 
 }
