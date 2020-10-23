@@ -12,11 +12,10 @@ class Test extends Model {
 
     public $famil;
 
-    /**
-     * @return array the validation rules.
-     */
     public function rules() {
-        return [];
+        return [
+            [['famil']],
+        ];
     }
 
 }

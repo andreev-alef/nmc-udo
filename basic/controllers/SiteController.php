@@ -162,13 +162,17 @@ class SiteController extends Controller {
 
         $model = new Test();
 
-        $famil = "Фамилия: " . Yii::$app->request->post('famil');
-
-        return $this->render('test', [
+        $model->load(Yii::$app->request->post());
+        return $this->render('test', ['model' => $model,
                     'testTitle' => $testTitle,
-                    'model' => $model,
-                    'fam' => $famil,
         ]);
+//        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+//            return $this->render('testmsg', ['model' => $model,
+//                        'testTitle' => $testTitle,
+//            ]);
+//        } else {
+//            return $this->render('test', ['model' => $model]);
+//        }
     }
 
 }
