@@ -14,7 +14,7 @@ class Test extends Model {
 
     public function rules() {
         return [
-            [['famil']],
+            [['famil'], 'required'],
         ];
     }
 

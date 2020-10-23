@@ -7,16 +7,16 @@ use yii\base\Model;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Reader\Xlsx;
 
+class FilterForm extends Model {
 
+    public $famil;
+    public $gos_nomer;
+    public $reg_nomer;
+    public $tema;
 
-class FilterForm extends Model
-{
-        public $famil;
-        public $gos_nomer;
-        public $reg_nomer;
-        public $tema;
-        
-        public function rules(){
-            return [];
-        }
+    public function rules() {
+        return [
+            [['famil', 'gos_nomer', 'reg_nomer'], 'default', 'value' => '',]];
+    }
+
 }
