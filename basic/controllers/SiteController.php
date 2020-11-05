@@ -70,8 +70,22 @@ class SiteController extends Controller {
         $c = 6;
         $r = 1536;
         $N = count($allData);
-        $filterFamil = 'Пусто';
         $filterModel->load(Yii::$app->request->post());
+        if ($filterModel->famil === '') {
+            $filterFamil = '/.*/u';
+        } else {
+            $filterFamil = '/.*' . $filterModel->famil . '.*/u';
+        }
+        if ($filterModel->gos_nomer === '') {
+            $filterGosNomer = '/.*/u';
+        } else {
+            $filterGosNomer = '/.*' . $filterModel->gos_nomer . '.*/u';
+        }
+        if ($filterModel->reg_nomer === '') {
+            $filterRegNomer = '/.*/u';
+        } else {
+            $filterRegNomer = '/.*' . $filterModel->reg_nomer . '.*/u';
+        }
         while ($j < $N) {
             if ($allData[$j][$c - 1] != '') {
                 $dataNotEpty[$i] = $allData[$j];

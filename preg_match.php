@@ -11,8 +11,8 @@ and open the template in the editor.
     </head>
     <body>
         <?php
-        $str = 'абвгдеёжзиклмнопрстуфхцыьъыюя';
-        $str_search = '/т./u';
+        $str = 'Табвгдеёжзиклмнопрстуфхцыьъыюя';
+        $str_search = '/.*/u';
         // preg_match('/(Гапош)/', $str, $matches, PREG_OFFSET_CAPTURE);
         // print_r($matches);
         // echo '<hr />';
