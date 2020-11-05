@@ -11,8 +11,8 @@ and open the template in the editor.
     </head>
     <body>
         <?php
-        $str = 'Гааапошшшкина';
-        $str_search = '/(ш)/i';
+        $str = 'абвгдеёжзиклмнопрстуфхцыьъыюя';
+        $str_search = '/т./u';
         // preg_match('/(Гапош)/', $str, $matches, PREG_OFFSET_CAPTURE);
         // print_r($matches);
         // echo '<hr />';
@@ -25,12 +25,12 @@ and open the template in the editor.
         // }
         ?>
         <p>Оригинальная строка «<?= $str; ?>»</p>
-        <?php $pm = preg_match($str_search, $str, $matches); ?>
+        <?php $pm = preg_match_all($str_search, $str, $matches); ?>
         <p>Искомая строка «<?= $str_search; ?>»</p>
-        <p>Кол-во: «<?= count($matches); ?>»</p>
+        <p>Кол-во: «<?= var_dump($matches); ?>»</p>
         <hr />
         <?php foreach ($matches as $s): ?>
-            <?= $s ?>
+           <!-- <?= $s ?> -->
             <hr />
         <?php endforeach; ?>
     </body>
