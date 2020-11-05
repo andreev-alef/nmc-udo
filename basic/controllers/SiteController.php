@@ -87,7 +87,7 @@ class SiteController extends Controller {
             $filterRegNomer = '/.*' . $filterModel->reg_nomer . '.*/u';
         }
         while ($j < $N) {
-            if ($allData[$j][$c - 1] != '') {
+            if ($allData[$j][$c - 1] !== '') {
                 $dataNotEpty[$i] = $allData[$j];
                 $i++;
             }
