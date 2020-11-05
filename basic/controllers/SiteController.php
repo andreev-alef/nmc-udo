@@ -65,6 +65,7 @@ class SiteController extends Controller {
         $udoRows = new UdoData();
         $udoSheet = $udoRows->getAllData();
         $allData = $udoSheet->toArray();
+        $dataNotEpty[] = null;
         $j = 0;
         $i = 0;
         $c = 6;
@@ -87,7 +88,7 @@ class SiteController extends Controller {
             $filterRegNomer = '/.*' . $filterModel->reg_nomer . '.*/u';
         }
         while ($j < $N) {
-            if ($allData[$j][$c - 1] !== '') {
+            if ($allData[$j][$c - 1] !== '' && preg_match_all($filterFamil, $allData[$j][8],$matches)!==0) {
                 $dataNotEpty[$i] = $allData[$j];
                 $i++;
             }
@@ -98,13 +99,14 @@ class SiteController extends Controller {
         return $this->render('index', [
                     'rowCount' => count($allData),
                     'rows' => $udoRows->getAllData(),
-                    'cellValue' => $udoSheet->getCellByColumnAndRow($c, $r)->getCalculatedValue(),
-                    'cellValueAB' => $udoSheet->getCell('F1533')->getCalculatedValue(),
-                    'cellNotEmpty' => $dataNotEpty[count($dataNotEpty) - 1][$c - 1],
+//                    'cellValue' => $udoSheet->getCellByColumnAndRow($c, $r)->getCalculatedValue(),
+//                    'cellValueAB' => $udoSheet->getCell('F1533')->getCalculatedValue(),
+//                    'cellNotEmpty' => $dataNotEpty[count($dataNotEpty) - 1][$c - 1],
                     'countNotEmpty' => count($dataNotEpty),
                     'data' => $dataNotEpty,
                     'filterModel' => $filterModel,
-                    'filterFamil' => $filterFamil
+                    'filterFamil' => $filterFamil,
+                    'matches' => $matches,
         ]);
     }
 
