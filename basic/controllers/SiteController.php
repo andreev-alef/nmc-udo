@@ -108,6 +108,7 @@ class SiteController extends Controller {
                     'data' => $dataNotEpty,
                     'filterModel' => $filterModel,
                     'filterFamil' => $filterFamil,
+                    'J'=>$j
 //                    'matches' => $matches,
         ]);
     }
