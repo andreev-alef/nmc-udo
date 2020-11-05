@@ -61,6 +61,7 @@ class SiteController extends Controller {
      * @return string
      */
     public function actionIndex() {
+        mb_regex_encoding('UTF-8');
         $filterModel = new FilterForm();
         $udoRows = new UdoData();
         $udoSheet = $udoRows->getAllData();
@@ -73,9 +74,9 @@ class SiteController extends Controller {
         $N = count($allData);
         $filterModel->load(Yii::$app->request->post());
         if ($filterModel->famil === '') {
-            $filterFamil = '/.*/u';
+            $filterFamil = '.*';
         } else {
-            $filterFamil = '/.*' . $filterModel->famil . '.*/u';
+            $filterFamil = '.*' . $filterModel->famil . '.*';
         }
         if ($filterModel->gos_nomer === '') {
             $filterGosNomer = '/.*/u';
@@ -88,7 +89,8 @@ class SiteController extends Controller {
             $filterRegNomer = '/.*' . $filterModel->reg_nomer . '.*/u';
         }
         while ($j < $N) {
-            if ($allData[$j][$c - 1] !== '' && preg_match_all($filterFamil, $allData[$j][8],$matches)!==0) {
+            if ($allData[$j][$c - 1] !== '' && mb_ereg_match($filterFamil, $allData[$j][8])) {
+//            if ($allData[$j][$c - 1] !== '' && preg_match_all('/.*Казар.*/i', $allData[$j][8],$matches)!==0) {
                 $dataNotEpty[$i] = $allData[$j];
                 $i++;
             }
@@ -106,7 +108,7 @@ class SiteController extends Controller {
                     'data' => $dataNotEpty,
                     'filterModel' => $filterModel,
                     'filterFamil' => $filterFamil,
-                    'matches' => $matches,
+//                    'matches' => $matches,
         ]);
     }
 

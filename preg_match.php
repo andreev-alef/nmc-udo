@@ -11,27 +11,18 @@ and open the template in the editor.
     </head>
     <body>
         <?php
-        $str = 'Табвгдеёжзиклмнопрстуфхцыьъыюя';
-        $str_search = '/.*/u';
-        // preg_match('/(Гапош)/', $str, $matches, PREG_OFFSET_CAPTURE);
-        // print_r($matches);
-        // echo '<hr />';
-        // echo $str;
-        // foreach($matches as $s){
-        // echo '<hr />';        
-        // foreach($s as $v){
-        // echo $v.'; ';
-        // }
-        // }
+        $str = 'Казарезова';
+        $str_search = '.*Казаре.*';
         ?>
+
         <p>Оригинальная строка «<?= $str; ?>»</p>
-        <?php $pm = preg_match_all($str_search, $str, $matches); ?>
+        <?php
+        mb_regex_encoding('UTF-8');
+        $m = mb_ereg_match($str_search, $str);
+        ?>
         <p>Искомая строка «<?= $str_search; ?>»</p>
-        <p>Кол-во: «<?= var_dump($matches); ?>»</p>
-        <hr />
-        <?php foreach ($matches as $s): ?>
-           <!-- <?= $s ?> -->
-            <hr />
-        <?php endforeach; ?>
+        <p>Кол-во: «<= var_dump($matches); ?>»</p>
+        <p><?= var_dump($m) ?></p>
+
     </body>
 </html>

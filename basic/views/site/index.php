@@ -37,10 +37,10 @@ $this->title = 'НМЦ';
             </div>
             <?php ActiveForm::end() ?>
             <div style="font-size: 14pt;">Всего записей: <b><?= $countNotEmpty ?></b>
-                <p><span>Фамилия: </span><?= $filterModel->famil ?></p>
-                <p><span>Госномер: </span><?= $filterModel->gos_nomer ?></p>
+                <!--<p><span>Фамилия: </span><?= $filterModel->famil ?></p>-->
+                <!--<p><span>Госномер: </span><?= $filterModel->gos_nomer ?></p>-->
                 <p><span>Фамилия: </span><?= $filterFamil ?></p>
-                <p><span>Совпадения: </span><?= var_dump($matches) ?></p>
+                <!--<p><span>Совпадения: </span><= var_dump($matches) ?></p>-->
             </div>
             <div class="filter">
                 
