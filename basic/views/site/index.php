@@ -37,15 +37,13 @@ $this->title = 'НМЦ';
             </div>
             <?php ActiveForm::end() ?>
             <?php if($data[0] === Null): ?>
-            <div style="font-size: 14pt; color: #ff0000;">Ничего не найдено</div>
+            <p style="font-size: 14pt; color: #ff0000;">
+                Ничего не найдено
+            </p>
             <?php else: ?>
-            <div style="font-size: 14pt;">Всего записей: <b><?= count($data) ?></b>
-                <!--
-                <p><span>Фамилия: </span><?= $filterModel->famil ?></p>
-                <p><span>$filterResult: </span><?= var_dump($filterResult) ?></p>
-                <p><span>Фамилия ключ: </span><?= var_dump($filterFamil) ?></p>
-                -->
-            </div>
+            <p style="font-size: 14pt;">
+                Всего записей: <b><?= count($data) ?></b>
+            </p>
             <?php endif?>
             <table class="table table-hover">
                 <tbody>
