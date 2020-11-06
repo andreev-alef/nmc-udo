@@ -77,7 +77,7 @@ class SiteController extends Controller {
         if ($filterModel->famil === '') {
             $filterResult = true;
         } else {
-            $filterResult = mb_ereg_match('.*', $allData[$j][8]);
+            $filterResult =false !== stripos($allData[$j][8], $filterModel->famil);
         }
         if ($filterModel->gos_nomer === '') {
             $filterGosNomer = '/.*/u';
