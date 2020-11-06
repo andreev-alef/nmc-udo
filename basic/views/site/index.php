@@ -40,7 +40,6 @@ $this->title = 'НМЦ';
                 <!--<p><span>Фамилия: </span><?= $filterModel->famil ?></p>-->
                 <!--<p><span>Госномер: </span><?= $filterModel->gos_nomer ?></p>-->
                 <p><span>Фамилия: </span><?= $filterFamil ?></p>
-                <p><span>J: </span><= $J ?></p>
             </div>
             <div class="filter">
                 

@@ -72,11 +72,12 @@ class SiteController extends Controller {
         $c = 6;
         $r = 1536;
         $N = count($allData);
+        $filterResult = true;
         $filterModel->load(Yii::$app->request->post());
         if ($filterModel->famil === '') {
-            $filterFamil = '.*';
+            $filterResult = true;
         } else {
-            $filterFamil = '.*' . $filterModel->famil . '.*';
+            $filterResult = mb_ereg_match('.*', $allData[$j][8]);
         }
         if ($filterModel->gos_nomer === '') {
             $filterGosNomer = '/.*/u';
@@ -89,7 +90,7 @@ class SiteController extends Controller {
             $filterRegNomer = '/.*' . $filterModel->reg_nomer . '.*/u';
         }
         while ($j < $N) {
-            if ($allData[$j][$c - 1] !== '' && mb_ereg_match($filterFamil, $allData[$j][8])) {
+            if ($allData[$j][$c - 1] !== '' && ) {
 //            if ($allData[$j][$c - 1] !== '' && preg_match_all('/.*Казар.*/i', $allData[$j][8],$matches)!==0) {
                 $dataNotEpty[$i] = $allData[$j];
                 $i++;
