@@ -74,11 +74,8 @@ class SiteController extends Controller {
         $N = count($allData);
         $filterResult = true;
         $filterModel->load(Yii::$app->request->post());
-        if ($filterModel->famil === '') {
-            $filterResult = true;
-        } else {
-            $filterResult =false !== stripos($allData[$j][8], $filterModel->famil);
-        }
+        
+        
         if ($filterModel->gos_nomer === '') {
             $filterGosNomer = '/.*/u';
         } else {
@@ -89,14 +86,17 @@ class SiteController extends Controller {
         } else {
             $filterRegNomer = '/.*' . $filterModel->reg_nomer . '.*/u';
         }
-        while ($j < $N) {
-            if ($allData[$j][$c - 1] !== '' && ) {
-//            if ($allData[$j][$c - 1] !== '' && preg_match_all('/.*Казар.*/i', $allData[$j][8],$matches)!==0) {
-                $dataNotEpty[$i] = $allData[$j];
-                $i++;
+
+            while ($j < $N) {
+                ($filterModel->famil === '')?$filterFamil = true : $filterResult = mb_stripos($allData[$j][8], $filterModel->famil) !== false;
+                if (($allData[$j][$c - 1] !== '') && $filterResult) {
+    //            if ($allData[$j][$c - 1] !== '' && preg_match_all('/.*Казар.*/i', $allData[$j][8],$matches)!==0) {
+                    $dataNotEpty[$i] = $allData[$j];
+                    $i++;
+                }
+                $j++;
             }
-            $j++;
-        }
+
 
 
         return $this->render('index', [
@@ -109,8 +109,8 @@ class SiteController extends Controller {
                     'data' => $dataNotEpty,
                     'filterModel' => $filterModel,
                     'filterFamil' => $filterFamil,
-                    'J'=>$j
-//                    'matches' => $matches,
+                    'J'=>$j,
+                    'filterResult' => $filterResult,
         ]);
     }
 

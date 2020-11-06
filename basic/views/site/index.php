@@ -37,9 +37,9 @@ $this->title = 'НМЦ';
             </div>
             <?php ActiveForm::end() ?>
             <div style="font-size: 14pt;">Всего записей: <b><?= $countNotEmpty ?></b>
-                <!--<p><span>Фамилия: </span><?= $filterModel->famil ?></p>-->
-                <!--<p><span>Госномер: </span><?= $filterModel->gos_nomer ?></p>-->
-                <p><span>Фамилия: </span><?= $filterFamil ?></p>
+                <p><span>Фамилия: </span><?= $filterModel->famil ?></p>
+                <p><span>$filterResult: </span><?= var_dump($filterResult) ?></p>
+                <p><span>Фамилия ключ: </span><?= var_dump($filterFamil) ?></p>
             </div>
             <div class="filter">
                 
@@ -47,7 +47,7 @@ $this->title = 'НМЦ';
             <table class="table table-hover">
                 <tbody>
                     <?php $n = count($data); ?>
-                    <?php for ($i = $n - 1; $i > 0; $i--): ?>
+                    <?php for ($i = $n; $i >= 0; $i--): ?>
                         <tr>
                             <td class="align-middle"><?= $data[$i][4] ?></td>
                             <td class="align-middle"><?= $data[$i][5] ?></td>
