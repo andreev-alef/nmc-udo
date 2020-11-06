@@ -90,7 +90,6 @@ class SiteController extends Controller {
             while ($j < $N) {
                 ($filterModel->famil === '')?$filterFamil = true : $filterResult = mb_stripos($allData[$j][8], $filterModel->famil) !== false;
                 if (($allData[$j][$c - 1] !== '') && $filterResult) {
-    //            if ($allData[$j][$c - 1] !== '' && preg_match_all('/.*Казар.*/i', $allData[$j][8],$matches)!==0) {
                     $dataNotEpty[$i] = $allData[$j];
                     $i++;
                 }
