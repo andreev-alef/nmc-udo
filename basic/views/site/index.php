@@ -8,21 +8,21 @@ $this->title = 'НМЦ';
 ?>
 <div class="site-index">
 
-    <!--    <div class="jumbotron">
-            <h1>Научно-методический центр</h1>
+        <div class="jumbotron">
+            <h2>База удостоверений</h2>
     
-            <p class="lead">Локальный сайт</p>
+            <!-- <p class="lead">Локальный сайт</p> -->
     
-            <p><a class="btn btn-lg btn-success" href="http://www.yiiframework.com">Get started with Yii</a></p>
+            <!-- <p><a class="btn btn-lg btn-success" href="http://www.yiiframework.com">Get started with Yii</a></p> -->
         </div>
-    -->
+    
     <div class="body-content">
 
         <div class="row">
-            <!-- <div class="col-lg-4"> -->
+            <!-- <div class="col-lg-4"> 
             <h2>
                 База удостоверений
-            </h2>
+            </h2> -->
             <?php
             $form = ActiveForm::begin([
                         'id' => 'filter-form',
