@@ -75,20 +75,10 @@ class SiteController extends Controller {
         $filterResult = true;
         $filterModel->load(Yii::$app->request->post());
         
-        
-        if ($filterModel->gos_nomer === '') {
-            $filterGosNomer = '/.*/u';
-        } else {
-            $filterGosNomer = '/.*' . $filterModel->gos_nomer . '.*/u';
-        }
-        if ($filterModel->reg_nomer === '') {
-            $filterRegNomer = '/.*/u';
-        } else {
-            $filterRegNomer = '/.*' . $filterModel->reg_nomer . '.*/u';
-        }
+        echo var_dump($filterModel->famil);
 
             while ($j < $N) {
-                ($filterModel->famil === '')?$filterFamil = true : $filterResult = mb_stripos($allData[$j][8], $filterModel->famil) !== false;
+                ($filterModel->famil === ''||$filterModel->famil === null)?($filterResult = true) : $filterResult = mb_stripos($allData[$j][8], $filterModel->famil) !== false;
                 if (($allData[$j][$c - 1] !== '') && $filterResult) {
                     $dataNotEpty[$i] = $allData[$j];
                     $i++;
@@ -107,7 +97,7 @@ class SiteController extends Controller {
                     'countNotEmpty' => count($dataNotEpty),
                     'data' => $dataNotEpty,
                     'filterModel' => $filterModel,
-                    'filterFamil' => $filterFamil,
+                    //'filterFamil' => $filterFamil,
                     'J'=>$j,
                     'filterResult' => $filterResult,
         ]);
