@@ -74,8 +74,6 @@ class SiteController extends Controller {
         $N = count($allData);
         $filterResult = true;
         $filterModel->load(Yii::$app->request->post());
-        
-        echo var_dump($filterModel->famil);
 
             while ($j < $N) {
                 ($filterModel->famil === ''||$filterModel->famil === null)?($filterResult = true) : $filterResult = mb_stripos($allData[$j][8], $filterModel->famil) !== false;
