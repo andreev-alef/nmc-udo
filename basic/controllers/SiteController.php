@@ -73,16 +73,21 @@ class SiteController extends Controller {
         $r = 1536;
         $N = count($allData);
         $filterResult = true;
+        $filterResultGosnomer = true;
+        $filterResultRegnomer = true;
         $filterModel->load(Yii::$app->request->post());
 
-            while ($j < $N) {
-                ($filterModel->famil === ''||$filterModel->famil === null)?($filterResult = true) : $filterResult = mb_stripos($allData[$j][8], $filterModel->famil) !== false;
-                if (($allData[$j][$c - 1] !== '') && $filterResult) {
-                    $dataNotEpty[$i] = $allData[$j];
-                    $i++;
-                }
-                $j++;
+        while ($j < $N) {
+            ($filterModel->famil === '' || $filterModel->famil === null) ? ($filterResultFamil = true) : ($filterResultFamil = mb_stripos($allData[$j][8], $filterModel->famil) !== false);
+            ($filterModel->gos_nomer === '' || $filterModel->gos_nomer === null) ? ($filterResultGosnomer = true) : ($filterResultGosnomer = mb_stripos($allData[$j][5], $filterModel->gos_nomer) !== false);
+            ($filterModel->reg_nomer === '' || $filterModel->reg_nomer === null) ? ($filterResultRegnomer = true) : ($filterResultRegnomer = mb_stripos($allData[$j][6], $filterModel->reg_nomer) !== false);
+            $filterResult = $filterResultFamil && $filterResultGosnomer && $filterResultRegnomer;
+            if (($allData[$j][$c - 1] !== '') && $filterResult) {
+                $dataNotEpty[$i] = $allData[$j];
+                $i++;
             }
+            $j++;
+        }
 
 
 
@@ -96,7 +101,7 @@ class SiteController extends Controller {
                     'data' => $dataNotEpty,
                     'filterModel' => $filterModel,
                     //'filterFamil' => $filterFamil,
-                    'J'=>$j,
+                    'J' => $j,
                     'filterResult' => $filterResult,
         ]);
     }

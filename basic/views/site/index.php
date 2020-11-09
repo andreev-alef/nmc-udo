@@ -8,14 +8,14 @@ $this->title = 'НМЦ';
 ?>
 <div class="site-index">
 
-        <div class="jumbotron">
-            <h2>База удостоверений</h2>
-    
-            <!-- <p class="lead">Локальный сайт</p> -->
-    
-            <!-- <p><a class="btn btn-lg btn-success" href="http://www.yiiframework.com">Get started with Yii</a></p> -->
-        </div>
-    
+    <div class="jumbotron">
+        <h2>База удостоверений</h2>
+
+        <!-- <p class="lead">Локальный сайт</p> -->
+
+        <!-- <p><a class="btn btn-lg btn-success" href="http://www.yiiframework.com">Get started with Yii</a></p> -->
+    </div>
+
     <div class="body-content">
 
         <div class="row">
@@ -36,21 +36,21 @@ $this->title = 'НМЦ';
                 <?= Html::submitButton("Найти", ['class' => 'btn btn-primary']) ?>
             </div>
             <?php ActiveForm::end() ?>
-            <?php if($data[0] === Null): ?>
-            <p style="font-size: 14pt; color: #ff0000;">
-                Ничего не найдено
-            </p>
+            <?php if ($data[0] === Null): ?>
+                <p style="font-size: 14pt; color: #ff0000;">
+                    Ничего не найдено
+                </p>
             <?php else: ?>
-            <p style="font-size: 14pt;">
-                Всего записей: <b><?= count($data) ?></b>
-            </p>
-            <?php endif?>
+                <p style="font-size: 14pt;">
+                    Всего записей: <b><?= count($data) ?></b>
+                </p>
+            <?php endif ?>
             <table class="table table-hover">
                 <tbody>
                     <?php $n = count($data); ?>
-                    <?php for ($i = $n-1; $i >= 0; $i--): ?>
+                    <?php for ($i = $n - 1; $i >= 0; $i--): ?>
                         <tr>
-                            <td class="align-middle"><?= $data[$i][4] ?></td>
+                            <td><b><?= $n - $i ?></b></td><td class="align-middle"><?= $data[$i][4] ?></td>
                             <td class="align-middle"><?= $data[$i][5] ?></td>
                             <td class="align-middle"><?= $data[$i][6] ?></td>
                             <td class="align-middle"><?= $data[$i][8] ?></td>
