@@ -44,25 +44,26 @@ $this->title = 'НМЦ';
                 <p style="font-size: 14pt;">
                     Всего записей: <b><?= count($data) ?></b>
                 </p>
+
+                <table class="table table-hover">
+                    <tbody>
+                        <?php $n = count($data); ?>
+                        <?php for ($i = $n - 1; $i >= 0; $i--): ?>
+                            <tr>
+                                <td><b><?= $n - $i ?></b></td><td class="align-middle"><?= $data[$i][4] ?></td>
+                                <td class="align-middle"><?= $data[$i][5] ?></td>
+                                <td class="align-middle"><?= $data[$i][6] ?></td>
+                                <td class="align-middle"><?= $data[$i][8] ?></td>
+                                <td class="align-middle"><?= $data[$i][9] ?></td>
+                                <td class="align-middle"><?= $data[$i][10] ?></td>
+                                <td class="align-middle"><?= $data[$i][11] ?></td>
+                                <td class="align-middle"><?= $data[$i][12] ?></td>
+                                <td class="align-middle"><?= $data[$i][13] ?></td>
+                            </tr>
+                        <?php endfor; ?>
+                    </tbody>
+                </table>
             <?php endif ?>
-            <table class="table table-hover">
-                <tbody>
-                    <?php $n = count($data); ?>
-                    <?php for ($i = $n - 1; $i >= 0; $i--): ?>
-                        <tr>
-                            <td><b><?= $n - $i ?></b></td><td class="align-middle"><?= $data[$i][4] ?></td>
-                            <td class="align-middle"><?= $data[$i][5] ?></td>
-                            <td class="align-middle"><?= $data[$i][6] ?></td>
-                            <td class="align-middle"><?= $data[$i][8] ?></td>
-                            <td class="align-middle"><?= $data[$i][9] ?></td>
-                            <td class="align-middle"><?= $data[$i][10] ?></td>
-                            <td class="align-middle"><?= $data[$i][11] ?></td>
-                            <td class="align-middle"><?= $data[$i][12] ?></td>
-                            <td class="align-middle"><?= $data[$i][13] ?></td>
-                        </tr>
-                    <?php endfor; ?>
-                </tbody>
-            </table>
             <p><a class="btn btn-default" href="http://www.yiiframework.com/doc/">Yii Documentation &raquo;</a></p>
         </div>        
     </div>
