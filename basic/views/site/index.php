@@ -44,13 +44,17 @@ $this->title = 'НМЦ';
                 <p style="font-size: 14pt;">
                     Всего записей: <b><?= count($data) ?></b>
                 </p>
+                <p style="font-size: 14pt; font-weight: bold">
+                    TEST: <?php $r = 132; ?>
+                    — <?= $data[$r][6] ?> — <?= $data[$r][5] ?> — <?= $rows[$r][5] ?>
+                </p>
 
                 <table class="table table-hover">
                     <tbody>
                         <?php $n = count($data); ?>
-                        <?php for ($i = $n - 1; $i >= 0; $i--): ?>
+                        <?php for ($i = 0; $i < $n; $i++): ?>
                             <tr>
-                                <td><b><?= $n - $i ?></b></td><td class="align-middle"><?= $data[$i][4] ?></td>
+                                <td><b><?= $i + 1 ?></b></td><td class="align-middle"><?= $data[$i][4] ?></td>
                                 <td class="align-middle"><?= $data[$i][5] ?></td>
                                 <td class="align-middle"><?= $data[$i][6] ?></td>
                                 <td class="align-middle"><?= $data[$i][8] ?></td>

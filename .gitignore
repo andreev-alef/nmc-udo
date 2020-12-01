@@ -1,3 +1,4 @@
 /basic/vagrant/
 *.ods#
 nmc.7z
+/nbproject/private/

@@ -82,7 +82,7 @@ class SiteController extends Controller {
             ($filterModel->gos_nomer === '' || $filterModel->gos_nomer === null) ? ($filterResultGosnomer = true) : ($filterResultGosnomer = mb_stripos($allData[$j][5], $filterModel->gos_nomer) !== false);
             ($filterModel->reg_nomer === '' || $filterModel->reg_nomer === null) ? ($filterResultRegnomer = true) : ($filterResultRegnomer = mb_stripos($allData[$j][6], $filterModel->reg_nomer) !== false);
             $filterResult = $filterResultFamil && $filterResultGosnomer && $filterResultRegnomer;
-            if (($allData[$j][$c - 1] !== '') && $filterResult) {
+            if (($allData[$j][$c - 1] !== '') && ($allData[$j][$c - 1] !== null) && $filterResult) {
                 $dataNotEpty[$i] = $allData[$j];
                 $i++;
             }
@@ -93,7 +93,7 @@ class SiteController extends Controller {
 
         return $this->render('index', [
                     'rowCount' => count($allData),
-                    'rows' => $udoRows->getAllData(),
+                    'rows' => $allData,
 //                    'cellValue' => $udoSheet->getCellByColumnAndRow($c, $r)->getCalculatedValue(),
 //                    'cellValueAB' => $udoSheet->getCell('F1533')->getCalculatedValue(),
 //                    'cellNotEmpty' => $dataNotEpty[count($dataNotEpty) - 1][$c - 1],
