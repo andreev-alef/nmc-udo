@@ -13,7 +13,7 @@ use app\models\UdoData;
 use app\models\FilterForm;
 use app\models\Test;
 
-class SiteController extends Controller {
+class KompetController extends Controller {
 
     /**
      * {@inheritdoc}
