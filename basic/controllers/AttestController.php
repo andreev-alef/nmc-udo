@@ -7,11 +7,13 @@ use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\Response;
 use yii\filters\VerbFilter;
+use yii\db\Query;
 use app\models\LoginForm;
 use app\models\ContactForm;
 use app\models\UdoData;
 use app\models\FilterForm;
 use app\models\Test;
+use app\models\Attest;
 
 class AttestController extends Controller {
 
@@ -62,47 +64,12 @@ class AttestController extends Controller {
      */
     public function actionIndex() {
         mb_regex_encoding('UTF-8');
-        $filterModel = new FilterForm();
-        $udoRows = new UdoData();
-        $udoSheet = $udoRows->getAllData();
-        $allData = $udoSheet->toArray();
-        $dataNotEpty[] = null;
-        $j = 0;
-        $i = 0;
-        $c = 6;
-        $r = 1536;
-        $N = count($allData);
-        $filterResult = true;
-        $filterResultGosnomer = true;
-        $filterResultRegnomer = true;
-        $filterModel->load(Yii::$app->request->post());
-
-        while ($j < $N) {
-            ($filterModel->famil === '' || $filterModel->famil === null) ? ($filterResultFamil = true) : ($filterResultFamil = mb_stripos($allData[$j][8], $filterModel->famil) !== false);
-            ($filterModel->gos_nomer === '' || $filterModel->gos_nomer === null) ? ($filterResultGosnomer = true) : ($filterResultGosnomer = mb_stripos($allData[$j][5], $filterModel->gos_nomer) !== false);
-            ($filterModel->reg_nomer === '' || $filterModel->reg_nomer === null) ? ($filterResultRegnomer = true) : ($filterResultRegnomer = mb_stripos($allData[$j][6], $filterModel->reg_nomer) !== false);
-            $filterResult = $filterResultFamil && $filterResultGosnomer && $filterResultRegnomer;
-            if (($allData[$j][$c - 1] !== '') && ($allData[$j][$c - 1] !== null) && $filterResult) {
-                $dataNotEpty[$i] = $allData[$j];
-                $i++;
-            }
-            $j++;
-        }
-
-
+        $sql = "SELECT nmc42test.nmc42mdl_user.username FROM nmc42test.nmc42mdl_user;";
+        $users = Yii::$app->nmcMoodleAttestDB->createCommand("SELECT nmc42test.nmc42mdl_user.username FROM nmc42test.nmc42mdl_user;")->queryAll();
+        echo $users[55]['username'];
+//        $users = Attest::findBySql($sql)->all();
 
         return $this->render('index', [
-                    'rowCount' => count($allData),
-                    'rows' => $allData,
-//                    'cellValue' => $udoSheet->getCellByColumnAndRow($c, $r)->getCalculatedValue(),
-//                    'cellValueAB' => $udoSheet->getCell('F1533')->getCalculatedValue(),
-//                    'cellNotEmpty' => $dataNotEpty[count($dataNotEpty) - 1][$c - 1],
-                    'countNotEmpty' => count($dataNotEpty),
-                    'data' => $dataNotEpty,
-                    'filterModel' => $filterModel,
-                    //'filterFamil' => $filterFamil,
-                    'J' => $j,
-                    'filterResult' => $filterResult,
         ]);
     }
 

@@ -1,0 +1,1 @@
+SELECT nmc42mdl_user FROM nmc42mdl_user;

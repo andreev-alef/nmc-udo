@@ -19,26 +19,7 @@ $this->title = 'НМЦ';
     <div class="body-content">
 
         <div class="row">
-            <!-- <div class="col-lg-4"> 
-            <h2>
-                База удостоверений
-            </h2> -->
-            <?php
-            $form = ActiveForm::begin([
-                        'id' => 'filter-form',
-                        'options' => ['class' => 'form-inline'],
-            ]);
-            ?>
-            <?= $form->field($filterModel, 'famil')->label("Фамилия") ?>
-            <?= $form->field($filterModel, 'gos_nomer')->label("Госномер") ?>
-            <?= $form->field($filterModel, 'reg_nomer')->label("Регистрационный номер") ?>
-            <div class="form-group">
-                <?= Html::submitButton("Найти", ['class' => 'btn btn-primary']) ?>
-            </div>
-            <?php ActiveForm::end() ?>
-            <!--
-            <p><a class="btn btn-default" href="http://www.yiiframework.com/doc/">Yii Documentation &raquo;</a></p>
-            -->
+
         </div>        
     </div>
 
