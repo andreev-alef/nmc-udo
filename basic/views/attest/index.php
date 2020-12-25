@@ -19,7 +19,10 @@ $this->title = 'НМЦ';
     <div class="body-content">
 
         <div class="row">
-
+            <?php $n = count($users) ?>
+            <?php for ($i = 0; $i < $n; $i++): ?>
+                <p><?= $users[$i]->id ?> <?= $users[$i]->lastname ?> <?= $users[$i]->firstname ?></p>
+            <?php endfor ?>
         </div>        
     </div>
 

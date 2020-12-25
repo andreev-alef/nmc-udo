@@ -13,7 +13,7 @@ use app\models\ContactForm;
 use app\models\UdoData;
 use app\models\FilterForm;
 use app\models\Test;
-use app\models\Attest;
+use app\models\Nmc42mdl_user;
 
 class AttestController extends Controller {
 
@@ -65,11 +65,10 @@ class AttestController extends Controller {
     public function actionIndex() {
         mb_regex_encoding('UTF-8');
         $sql = "SELECT nmc42test.nmc42mdl_user.username FROM nmc42test.nmc42mdl_user;";
-        $users = Yii::$app->nmcMoodleAttestDB->createCommand("SELECT nmc42test.nmc42mdl_user.username FROM nmc42test.nmc42mdl_user;")->queryAll();
-        echo $users[55]['username'];
-//        $users = Attest::findBySql($sql)->all();
+        $users = Nmc42mdl_user::find()->all();
 
         return $this->render('index', [
+            'users'=>$users,
         ]);
     }
 
