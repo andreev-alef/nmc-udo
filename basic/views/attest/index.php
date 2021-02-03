@@ -2,6 +2,8 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use yii\helpers\Url;
+use yii\widgets\LinkPager;
 
 /* @var $this yii\web\View */
 $this->title = 'НМЦ';
@@ -19,11 +21,27 @@ $this->title = 'НМЦ';
     <div class="body-content">
 
         <div class="row">
+            
             <?php $n = count($users) ?>
-            <?php for ($i = 0; $i < $n; $i++): ?>
-                <p><?= $users[$i]->id ?> <?= $users[$i]->lastname ?> <?= $users[$i]->firstname ?></p>
-            <?php endfor ?>
-        </div>        
+            <p><?= $pagesCount ?></p>
+            <p><?= $totalCount ?></p>
+            <p><?= $n ?></p>
+            <table class="table table-hover">
+                <tbody>                    
+                    <?php for ($i = 0; $i < $n; $i++): ?>
+                        <tr>
+
+                            <td class="align-middle"><a href="<?= Url::to(['attest/pdf']) ?>"><?= Html::img(Yii::getAlias('@web') . '/img/pdf_2186.png') ?></a></td>
+                            <td class="align-middle"><?= $users[$i]->lastname ?></td>
+                            <td class="align-middle"><?= $users[$i]->firstname ?></td>
+                            <td class="align-middle"><?= $users[$i]->username ?></td>
+                            <td class="align-middle"><a href="<?= Url::to(['attest/pdf']) ?>"><?= Html::img(Yii::getAlias('@web') . '/img/pdf_2186.png') ?></a></td>
+                        </tr>
+                    <?php endfor; ?>
+                </tbody>
+            </table>
+            <?= LinkPager::widget(['pagination' => $pagination]) ?>
+        </div>
     </div>
 
 </div>

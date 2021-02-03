@@ -8,6 +8,7 @@ use yii\web\Controller;
 use yii\web\Response;
 use yii\filters\VerbFilter;
 use yii\db\Query;
+use yii\data\Pagination;
 use app\models\LoginForm;
 use app\models\ContactForm;
 use app\models\UdoData;
@@ -64,11 +65,31 @@ class AttestController extends Controller {
      */
     public function actionIndex() {
         mb_regex_encoding('UTF-8');
-        $sql = "SELECT nmc42test.nmc42mdl_user.username FROM nmc42test.nmc42mdl_user;";
-        $users = Nmc42mdl_user::find()->all();
+        $sql = "SELECT nmc42test.nmc42mdl_user.username FROM nmc42test.nmc42mdl_user ;";
+        $query = Nmc42mdl_user::find();
+        $pages = new Pagination([
+            'defaultPageSize' => 20,
+            'totalCount' => $query->count()]);
+        $users = Nmc42mdl_user::find()->orderBy('lastname')
+                ->offset($pages->offset)
+                ->limit($pages->limit)
+                ->all();
 
         return $this->render('index', [
-            'users'=>$users,
+                    'users' => $users,
+                    'pagination' => $pages,
+                    'pagesCount' => $pages->defaultPageSize,
+                    'totalCount' => $query->count(),
+        ]);
+    }
+
+    public function actionPdf() {
+        mb_regex_encoding('UTF-8');
+        $sql = "SELECT nmc42test.nmc42mdl_user.username FROM nmc42test.nmc42mdl_user ;";
+        $users = Nmc42mdl_user::find()->orderBy('lastname')->all();
+
+        return $this->render('pdf', [
+                    'users' => $users,
         ]);
     }
 
