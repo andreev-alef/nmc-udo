@@ -6,6 +6,7 @@ use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\Response;
+use yii\web\Request;
 use yii\filters\VerbFilter;
 use yii\db\Query;
 use yii\data\Pagination;
@@ -72,7 +73,6 @@ class AttestController extends Controller {
             'totalCount' => $query->count()]);
         $users = Nmc42mdl_user::find()->orderBy('lastname')
                 ->offset($pages->offset)
-                ->limit($pages->limit)
                 ->all();
 
         return $this->render('index', [
@@ -86,10 +86,13 @@ class AttestController extends Controller {
     public function actionPdf() {
         mb_regex_encoding('UTF-8');
         $sql = "SELECT nmc42test.nmc42mdl_user.username FROM nmc42test.nmc42mdl_user ;";
-        $users = Nmc42mdl_user::find()->orderBy('lastname')->all();
+        $req = Yii::$app->request;
+        $id = $req->get('id');
+        $user = Nmc42mdl_user::findOne($id);
 
         return $this->render('pdf', [
-                    'users' => $users,
+                    'user' => $user,
+                    'getId' => $id,
         ]);
     }
 

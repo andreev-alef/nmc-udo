@@ -6,7 +6,7 @@ use TCPDF;
 $nmc_db = new mysqli('192.168.0.2', 'nmc42', 'wasd---===', 'nmc42test');
 
 $user_id = filter_input(INPUT_GET, 'userid');
-$user_id = 13;
+//$user_id = 13;
 $sql = 'select nmc42mdl_grade_grades.id,'
         . 'nmc42mdl_user.lastname, nmc42mdl_user.firstname, '
         . 'nmc42mdl_grade_items.itemname, '
@@ -15,17 +15,18 @@ $sql = 'select nmc42mdl_grade_grades.id,'
         . 'from nmc42mdl_grade_items, nmc42mdl_grade_grades, nmc42mdl_user '
         . 'where nmc42mdl_grade_items.id=nmc42mdl_grade_grades.itemid '
         . 'and nmc42mdl_user.id=nmc42mdl_grade_grades.userid '
-        . 'and nmc42mdl_grade_grades.userid=' . $user_id . ' '
+        . 'and nmc42mdl_grade_grades.userid=' . $user->id . ' '
         . 'and nmc42mdl_grade_items.courseid=4 '
         . 'and nmc42mdl_grade_grades.finalgrade is not null '
         . 'and nmc42mdl_grade_items.itemname is not null '
         . 'AND nmc42test.nmc42mdl_grade_grades.timemodified >= (UNIX_TIMESTAMP(NOW())-TIME_TO_SEC(NOW()))'
         . 'order by nmc42mdl_grade_items.id;';
-$nmc_result = $nmc_db->query($sql);
-$data_rows = $nmc_result->fetch_all(MYSQLI_ASSOC);
-$N = $nmc_result->num_rows;
+//$nmc_result = $nmc_db->query($sql);
+//$data_rows = $nmc_result->fetch_all(MYSQLI_ASSOC);
+$N = 5;
 $summ = 0;
-$file_name = $data_rows[0]['lastname'] . '_' . $data_rows[0]['firstname'] . '.pdf';
+$file_name = $user->lastname . '_' . $user->firstname . '.pdf';
+
 
 $my_pdf = new TCPDF('P', 'mm', 'A4', TRUE, 'UTF-8');
 $my_pdf->SetMargins(15, 15);
@@ -42,8 +43,8 @@ $my_pdf->SetTextColor(0, 0, 0);
 
 $html = '<style>table, td{border: #000 solid 2mm; padding: 2mm} td{padding: 5mm}</style>';
 $html = $html . '<h1 style="font-size: 18pt; text-align: center;">Результаты квалификационных испытаний</h1>';
-$html = $html . '<p> </p><p>' . $data_rows[0]['lastname'] . '&nbsp;' . $data_rows[0]['firstname'] . '</p>';
-$html = $html . '<p>Дата:&nbsp;' . date('d.m.Y', $data_rows[0]['timemodified']) . '</p>';
+$html = $html . '<p> </p><p>' . $user->lastname . '&nbsp;' . $user->firstname . '</p>';
+$html = $html . '<p>Дата:&nbsp;' . date('d.m.Y', $user->timemodified) . '</p>';
 $html = $html . '<p><table class="result" border="1">';
 $html = $html . '<tr border="1">';
 $html = $html . '<td border="1" width="80%" align="center"><span style="font-family:PTF75F">Наименование</span></td>';

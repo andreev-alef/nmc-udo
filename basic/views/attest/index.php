@@ -21,26 +21,25 @@ $this->title = 'НМЦ';
     <div class="body-content">
 
         <div class="row">
-            
+
             <?php $n = count($users) ?>
             <p><?= $pagesCount ?></p>
             <p><?= $totalCount ?></p>
             <p><?= $n ?></p>
             <table class="table table-hover">
-                <tbody>                    
+                <tbody>
                     <?php for ($i = 0; $i < $n; $i++): ?>
                         <tr>
-
-                            <td class="align-middle"><a href="<?= Url::to(['attest/pdf']) ?>"><?= Html::img(Yii::getAlias('@web') . '/img/pdf_2186.png') ?></a></td>
+                            <td class="align-middle"><a href="<?= Url::to(['attest/pdf', 'id' => $users[$i]->id]) ?>"><?= Html::img(Yii::getAlias('@web') . '/img/pdf_2186.png') ?></a></td>
                             <td class="align-middle"><?= $users[$i]->lastname ?></td>
                             <td class="align-middle"><?= $users[$i]->firstname ?></td>
                             <td class="align-middle"><?= $users[$i]->username ?></td>
-                            <td class="align-middle"><a href="<?= Url::to(['attest/pdf']) ?>"><?= Html::img(Yii::getAlias('@web') . '/img/pdf_2186.png') ?></a></td>
+                            <td class="align-middle"><a href="<?= Url::to(['attest/pdf', 'id' => $users[$i]->id]) ?>"><?= Html::img(Yii::getAlias('@web') . '/img/pdf_2186.png') ?></a></td>
                         </tr>
                     <?php endfor; ?>
                 </tbody>
             </table>
-            <?= LinkPager::widget(['pagination' => $pagination]) ?>
+            <!-- <?= LinkPager::widget(['pagination' => $pagination]) ?> -->
         </div>
     </div>
 
