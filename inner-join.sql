@@ -1,4 +1,6 @@
-SELECT nmc42test.nmc42mdl_user.lastname,
+SELECT nmc42test.nmc42mdl_grade_grades.id AS grades_id,
+	nmc42test.nmc42mdl_course.id AS course_id,
+	nmc42test.nmc42mdl_user.lastname,
 	nmc42test.nmc42mdl_user.firstname,
 	nmc42test.nmc42mdl_grade_grades.finalgrade,
 	DATE_FORMAT(FROM_UNIXTIME(nmc42test.nmc42mdl_grade_grades.timemodified), '%d.%m.%Y') AS date,
@@ -10,5 +12,6 @@ INNER JOIN nmc42test.nmc42mdl_grade_items ON nmc42test.nmc42mdl_grade_items.id =
 INNER JOIN nmc42test.nmc42mdl_course ON nmc42test.nmc42mdl_course.id = nmc42test.nmc42mdl_grade_items.courseid
 WHERE nmc42test.nmc42mdl_grade_items.itemname IS NOT NULL
 	AND nmc42test.nmc42mdl_grade_grades.finalgrade IS NOT NULL 
-	AND nmc42test.nmc42mdl_user.id=173
+	AND nmc42test.nmc42mdl_user.id = 124
+	AND nmc42test.nmc42mdl_course.id != 3
 ORDER BY nmc42test.nmc42mdl_user.lastname;
