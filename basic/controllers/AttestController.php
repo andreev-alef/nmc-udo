@@ -95,6 +95,17 @@ class AttestController extends Controller {
                     'getId' => $id,
         ]);
     }
+    public function actionUser() {
+        mb_regex_encoding('UTF-8');
+        $req = Yii::$app->request;
+        $id = $req->get('id');
+        $user = Nmc42mdl_user::findOne($id);
+
+        return $this->render('user', [
+                    'user' => $user,
+                    'getId' => $id,
+        ]);
+    }
 
     /**
      * Login action.

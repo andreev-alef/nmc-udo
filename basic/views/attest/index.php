@@ -21,20 +21,19 @@ $this->title = 'НМЦ';
     <div class="body-content">
 
         <div class="row">
-
             <?php $n = count($users) ?>
-            <p><?= $pagesCount ?></p>
-            <p><?= $totalCount ?></p>
-            <p><?= $n ?></p>
+            <p><b>Всего учётных записей: <?= $n ?></b></p>
             <table class="table table-hover">
                 <tbody>
                     <?php for ($i = 0; $i < $n; $i++): ?>
                         <tr>
-                            <td class="align-middle"><a href="<?= Url::to(['attest/pdf', 'id' => $users[$i]->id]) ?>"><?= Html::img(Yii::getAlias('@web') . '/img/pdf_2186.png') ?></a></td>
-                            <td class="align-middle"><?= $users[$i]->lastname ?></td>
-                            <td class="align-middle"><?= $users[$i]->firstname ?></td>
+                            <td class="align-middle"><?= $i ?></td>
+                            <td class="align-middle">
+                                <a href="<?= Url::to(['attest/user', 'id' => $users[$i]->id]) ?>" target="_self">
+                                    <?= $users[$i]->lastname ?> <?= $users[$i]->firstname ?>
+                                </a></td>
                             <td class="align-middle"><?= $users[$i]->username ?></td>
-                            <td class="align-middle"><a href="<?= Url::to(['attest/pdf', 'id' => $users[$i]->id]) ?>"><?= Html::img(Yii::getAlias('@web') . '/img/pdf_2186.png') ?></a></td>
+                            <td class="align-middle"><a href="<?= Url::to(['attest/pdf', 'id' => $users[$i]->id]) ?>"><!-- <?= Html::img(Yii::getAlias('@web') . '/img/pdf_2186.png') ?> --></a></td>
                         </tr>
                     <?php endfor; ?>
                 </tbody>
