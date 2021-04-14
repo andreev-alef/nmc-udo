@@ -12,6 +12,6 @@ INNER JOIN nmc42test.nmc42mdl_grade_items ON nmc42test.nmc42mdl_grade_items.id =
 INNER JOIN nmc42test.nmc42mdl_course ON nmc42test.nmc42mdl_course.id = nmc42test.nmc42mdl_grade_items.courseid
 WHERE nmc42test.nmc42mdl_grade_items.itemname IS NOT NULL
 	AND nmc42test.nmc42mdl_grade_grades.finalgrade IS NOT NULL 
-	AND nmc42test.nmc42mdl_user.id = 124
+	AND nmc42test.nmc42mdl_user.id = 374
 	AND nmc42test.nmc42mdl_course.id != 3
 ORDER BY nmc42test.nmc42mdl_user.lastname;

@@ -7,6 +7,7 @@ use yii\widgets\LinkPager;
 
 /* @var $this yii\web\View */
 $this->title = 'НМЦ';
+date_default_timezone_set("Asia/Novokuznetsk");
 ?>
 <div class="site-index">
 
@@ -22,23 +23,27 @@ $this->title = 'НМЦ';
 
         <div class="row">
             <?php $n = count($users) ?>
+            <hr />
             <p><b>Всего учётных записей: <?= $n ?></b></p>
             <table class="table table-hover">
                 <tbody>
                     <?php for ($i = 0; $i < $n; $i++): ?>
                         <tr>
                             <td class="align-middle"><?= $i ?></td>
+                            <td class="align-middle"><?= $users[$i]->id ?></td>
                             <td class="align-middle">
                                 <a href="<?= Url::to(['attest/user', 'id' => $users[$i]->id]) ?>" target="_self">
                                     <?= $users[$i]->lastname ?> <?= $users[$i]->firstname ?>
                                 </a></td>
                             <td class="align-middle"><?= $users[$i]->username ?></td>
+                            <td class="align-middle"><?= date("d.m.Y <b>(H:i)</b", $users[$i]->firstaccess) ?></td>
+                            <td class="align-middle"><?= date("d.m.Y <b>(H:i)</b>", $users[$i]->lastaccess) ?></td>
+                            <td class="align-middle"><?= $users[$i]->email ?></td>
                             <td class="align-middle"><a href="<?= Url::to(['attest/pdf', 'id' => $users[$i]->id]) ?>"><!-- <?= Html::img(Yii::getAlias('@web') . '/img/pdf_2186.png') ?> --></a></td>
                         </tr>
                     <?php endfor; ?>
                 </tbody>
             </table>
-            <!-- <?= LinkPager::widget(['pagination' => $pagination]) ?> -->
         </div>
     </div>
 

@@ -7,6 +7,7 @@ use yii\widgets\LinkPager;
 
 /* @var $this yii\web\View */
 $this->title = 'НМЦ';
+date_default_timezone_set("Asia/Novokuznetsk");
 ?>
 <div class="site-index">
 
@@ -23,6 +24,8 @@ $this->title = 'НМЦ';
 
         <div class="row">
             <p><?= $user->lastaccess ?></p>
+            <p><?= date("d.m.Y H:i:s", $user->firstaccess) ?></p>
+            <p><?= date("d.m.Y H:i:s", $user->lastaccess) ?></p>
             <p><?= $user->id ?></p>
             <p><?= var_dump($user)?></p>
         </div>
